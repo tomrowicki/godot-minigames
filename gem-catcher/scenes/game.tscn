@@ -16,3 +16,7 @@ position = Vector2(542, 593)
 
 [node name="Gem" parent="." instance=ExtResource("3_st226")]
 position = Vector2(800, 304)
+
+[node name="Gem2" parent="." instance=ExtResource("3_st226")]
+position = Vector2(425, 168)
+speed = 150.0
