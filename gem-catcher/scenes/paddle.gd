@@ -15,3 +15,7 @@ func _process(delta: float) -> void:
 		
 	elif Input.is_action_pressed("right"):
 		position.x += speed * delta
+
+
+func _on_gem_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
