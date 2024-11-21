@@ -21,4 +21,19 @@ position = Vector2(542, 593)
 wait_time = 2.0
 autostart = true
 
+[node name="Label" type="Label" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 134.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(0.356934, 0.566354, 0.276144, 1)
+theme_override_colors/font_shadow_color = Color(3.00817e-08, 0.31663, 4.81308e-08, 1)
+theme_override_colors/font_outline_color = Color(0, 0.161417, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
+text = "00000"
+
+[connection signal="area_entered" from="Paddle" to="." method="_on_paddle_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
