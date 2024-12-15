@@ -13,8 +13,8 @@ z_index = -3
 position = Vector2(325, 404)
 texture = ExtResource("1_dw8s0")
 
-[node name="Plane" parent="Sprite2D" instance=ExtResource("2_5cled")]
-position = Vector2(-224, 85)
+[node name="Plane" parent="." instance=ExtResource("2_5cled")]
+position = Vector2(101, 489)
 
 [node name="Barrier" parent="." instance=ExtResource("3_6ijye")]
 
@@ -33,5 +33,4 @@ autostart = true
 
 [node name="PipesHolder" type="Node2D" parent="."]
 
-[connection signal="on_plane_died" from="Sprite2D/Plane" to="." method="_on_plane_died"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
