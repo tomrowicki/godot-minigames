@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://ca15rw60jbddj"]
+[gd_scene load_steps=5 format=3 uid="uid://ca15rw60jbddj"]
+
+[ext_resource type="Texture2D" uid="uid://dx2f66w13gy1a" path="res://assets/background/sky.png" id="1_0c4j3"]
+[ext_resource type="LabelSettings" uid="uid://bogeex1cadbfl" path="res://assets/LG_red_72.tres" id="2_e4v5b"]
+[ext_resource type="LabelSettings" uid="uid://nroybfn03nnf" path="res://assets/LG_white_32.tres" id="3_672bc"]
+[ext_resource type="LabelSettings" uid="uid://bcaga54jvca7w" path="res://assets/LG_red_24.tres" id="3_yvgm1"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -7,6 +12,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0c4j3")
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -25,6 +40,7 @@ layout_mode = 2
 size_flags_vertical = 0
 text = "TAPPY
 PLANE"
+label_settings = ExtResource("2_e4v5b")
 horizontal_alignment = 1
 
 [node name="MiddleLabel" type="Label" parent="MarginContainer"]
@@ -32,6 +48,7 @@ layout_mode = 2
 text = "Press space
 to
 play"
+label_settings = ExtResource("3_672bc")
 horizontal_alignment = 1
 uppercase = true
 
@@ -40,9 +57,11 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "HIGHSCORE"
+label_settings = ExtResource("3_yvgm1")
 
 [node name="BotRightLabel" type="Label" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-text = "1"
+text = "00000"
+label_settings = ExtResource("3_yvgm1")
