@@ -1,9 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://ca15rw60jbddj"]
+[gd_scene load_steps=9 format=3 uid="uid://ca15rw60jbddj"]
 
 [ext_resource type="Texture2D" uid="uid://dx2f66w13gy1a" path="res://assets/background/sky.png" id="1_0c4j3"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_1o3h5"]
 [ext_resource type="LabelSettings" uid="uid://bogeex1cadbfl" path="res://assets/LG_red_72.tres" id="2_e4v5b"]
 [ext_resource type="LabelSettings" uid="uid://nroybfn03nnf" path="res://assets/LG_white_32.tres" id="3_672bc"]
 [ext_resource type="LabelSettings" uid="uid://bcaga54jvca7w" path="res://assets/LG_red_24.tres" id="3_yvgm1"]
+[ext_resource type="AudioStream" uid="uid://b5uqdwt7wmd17" path="res://assets/audio/bgm_menu.mp3" id="5_gcwhj"]
+
+[sub_resource type="Animation" id="Animation_7jv8y"]
+resource_name = "flash"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/MiddleLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpbe4"]
+_data = {
+"flash": SubResource("Animation_7jv8y")
+}
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -12,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_1o3h5")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -65,3 +90,14 @@ size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "00000"
 label_settings = ExtResource("3_yvgm1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fpbe4")
+}
+autoplay = "flash"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_gcwhj")
+volume_db = -12.02
+autoplay = true
