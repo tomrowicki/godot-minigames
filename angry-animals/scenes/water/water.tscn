@@ -23,3 +23,5 @@ shape = SubResource("RectangleShape2D_aeflc")
 
 [node name="Splash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_goyyg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
