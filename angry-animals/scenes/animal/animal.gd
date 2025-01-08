@@ -50,6 +50,7 @@ func set_release() -> void:
 	freeze = false
 	apply_central_impulse(get_impulse())
 	launch_sound.play()
+	SignalManager.on_attempt_made.emit()
 
 func set_new_state(new_state: ANIMAL_STATE) -> void:
 	_state = new_state
@@ -107,6 +108,7 @@ func update_drag() -> void:
 	scale_arrow()
 
 func play_collision() -> void:
+	# can just use on_body_entered signal instead of all of the below checks
 	if _last_collision_count == 0 and get_contact_count() > 0 and !kick_sound.playing:
 		kick_sound.play()
 		_last_collision_count = get_contact_count()
@@ -133,7 +135,9 @@ func _on_input_event(viewport, event: InputEvent, shape_idx):
 	if _state == ANIMAL_STATE.READY and event.is_action_pressed("drag"):
 		set_new_state(ANIMAL_STATE.DRAG)
 
-
 func _on_sleeping_state_changed() -> void:
 	if sleeping:
+		var cb = get_colliding_bodies()
+		if cb.size() > 0:
+			cb[0].die()
 		call_deferred("die") # calls function in a thread-safe way
