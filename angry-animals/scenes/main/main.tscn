@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbim6mra7awt1"]
+
+[ext_resource type="Texture2D" uid="uid://dvmu6o18fvh4c" path="res://assets/env/MainBG.png" id="1_euljf"]
+[ext_resource type="PackedScene" uid="uid://dkn5ln5al4xcl" path="res://scenes/level_button/level_button.tscn" id="2_qeyuj"]
+[ext_resource type="FontFile" uid="uid://bak5cnbhk7ccx" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="3_ew87p"]
+[ext_resource type="AudioStream" uid="uid://b1qqa8sw3ci0q" path="res://assets/audio/birdsong.wav" id="4_xohkb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lttix"]
+font = ExtResource("3_ew87p")
+font_size = 96
+font_color = Color(0.176471, 0.490196, 1, 1)
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.470588)
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_euljf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="LevelButton" parent="HBoxContainer" instance=ExtResource("2_qeyuj")]
+layout_mode = 2
+
+[node name="LevelButton2" parent="HBoxContainer" instance=ExtResource("2_qeyuj")]
+layout_mode = 2
+
+[node name="LevelButton3" parent="HBoxContainer" instance=ExtResource("2_qeyuj")]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -353.5
+offset_right = 353.5
+offset_bottom = 100.0
+grow_horizontal = 2
+rotation = 0.0523599
+theme_override_constants/margin_top = 24
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+text = "ANGRY ANIMALS
+"
+label_settings = SubResource("LabelSettings_lttix")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_xohkb")
+autoplay = true
