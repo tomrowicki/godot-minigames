@@ -16,6 +16,7 @@ func _ready() -> void:
 	level_label.text = str(level_number)
 
 func _on_pressed() -> void:
+	ScoreManager.set_level_selected(level_number)
 	get_tree().change_scene_to_packed(_level_scene)
 
 
