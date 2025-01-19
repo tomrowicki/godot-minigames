@@ -9,3 +9,6 @@ class_name ImageFilesList
 
 func add_filename(fn: String) -> void:
 	file_names.append(fn)
+	
+func get_filenames() -> Array[String]:
+	return file_names
