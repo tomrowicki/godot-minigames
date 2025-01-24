@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf6dsmhuee6i"]
+[gd_scene load_steps=6 format=3 uid="uid://cf6dsmhuee6i"]
 
 [ext_resource type="LabelSettings" uid="uid://efdir2vdny11" path="res://assets/GM_32_Dark.tres" id="1_5tnkm"]
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_xavoe"]
 [ext_resource type="Texture2D" uid="uid://l6ctpcj3avru" path="res://assets/ui/blue_button00.png" id="2_vlul8"]
 [ext_resource type="Texture2D" uid="uid://bwah0ojk3ev67" path="res://assets/ui/green_button00.png" id="3_8cj0m"]
 [ext_resource type="LabelSettings" uid="uid://bb630qrhxr0ef" path="res://assets/GM_32_White.tres" id="4_hthlh"]
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_xavoe")
 
 [node name="HB" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -96,3 +98,5 @@ text = "EXIT"
 label_settings = ExtResource("4_hthlh")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="HB/MC2/VB/ExitButton" to="." method="_on_exit_button_pressed"]
