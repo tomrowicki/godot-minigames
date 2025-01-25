@@ -1,6 +1,12 @@
 extends Control
 
 
+const MEMORY_TILE = preload("res://scenes/memory_tile/memory_tile.tscn")
+
+
+@onready var tc: GridContainer = $HB/MC/TC
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalManager.on_level_selected.connect(on_level_selected)
@@ -11,9 +17,20 @@ func _process(delta: float) -> void:
 	pass
 
 
-func on_level_selected(level_num: int) -> void:
-	print(level_num)
+func add_memory_tile(image: ItemImage, frame: Texture2D) -> void:
+	var nt: MemoryTile = MEMORY_TILE.instantiate()
+	tc.add_child(nt)
+	nt.setup(image, frame)
 	
+
+func on_level_selected(level_num: int) -> void:
+	var ld: SelectedLevelData = GameManager.get_level_selection(level_num)
+	var frame: Texture2D = ImageManager.get_random_frame_image()
+	
+	tc.columns = ld.get_num_cols()
+	
+	for image in ld.get_selected_level_images():
+		add_memory_tile(image, frame)
 
 
 func _on_exit_button_pressed() -> void:

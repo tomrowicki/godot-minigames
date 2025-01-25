@@ -9,7 +9,7 @@ func _init(target_pairs: int, num_cols: int, selected_level_images: Array[ItemIm
 	_target_pairs = target_pairs
 	_num_cols = num_cols
 	
-func get_selected_level_imageS() -> Array[ItemImage]:
+func get_selected_level_images() -> Array[ItemImage]:
 	return _selected_level_images
 
 func get_target_pairs() -> int:

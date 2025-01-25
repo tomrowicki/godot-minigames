@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd2575kor4g0j"]
+
+[ext_resource type="Texture2D" uid="uid://dvmso38lni3la" path="res://assets/frames/hidden_frame_blank.png" id="1_a7ctm"]
+[ext_resource type="Texture2D" uid="uid://bklkvyt06ir51" path="res://assets/frames/blue_frame.png" id="2_e7fe8"]
+[ext_resource type="Script" path="res://scenes/memory_tile/memory_tile.gd" id="2_e7541"]
+[ext_resource type="Texture2D" uid="uid://dqyfhtdnr1khr" path="res://assets/glitch/cactus.png" id="3_ot1xn"]
+
+[node name="MemoryTile" type="TextureButton"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(42, 42)
+texture_normal = ExtResource("1_a7ctm")
+script = ExtResource("2_e7541")
+
+[node name="FrameImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.0
+offset_top = -42.0
+offset_right = 42.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e7fe8")
+
+[node name="ItemImage" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ot1xn")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
