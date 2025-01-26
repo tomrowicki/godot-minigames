@@ -34,4 +34,6 @@ func on_level_selected(level_num: int) -> void:
 
 
 func _on_exit_button_pressed() -> void:
+	for t in tc.get_children():
+		t.queue_free()
 	SignalManager.on_game_exit_pressed.emit()
