@@ -22,3 +22,5 @@ texture = ExtResource("2_lt77f")
 visible = false
 
 [node name="Game" parent="." instance=ExtResource("4_1h6pi")]
+
+[node name="Sound" type="AudioStreamPlayer" parent="."]
