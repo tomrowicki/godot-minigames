@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://ppv5igr3aew8"]
+[gd_scene load_steps=12 format=3 uid="uid://ppv5igr3aew8"]
 
 [ext_resource type="Texture2D" uid="uid://elagrijx20w3" path="res://assets/player/player.png" id="1_er8x2"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_wk37l"]
+[ext_resource type="PackedScene" uid="uid://b55s0vctisbcy" path="res://scenes/player_cam/player_cam.tscn" id="3_2t45l"]
 
 [sub_resource type="Animation" id="Animation_d7xm3"]
 length = 0.001
@@ -137,3 +138,5 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_jol60")
+
+[node name="PlayerCam" parent="." instance=ExtResource("3_2t45l")]
