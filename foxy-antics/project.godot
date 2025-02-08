@@ -23,7 +23,8 @@ window/stretch/mode="canvas_items"
 
 [global_group]
 
-Movables=""
+Moveables=""
+Player=""
 
 [input]
 
