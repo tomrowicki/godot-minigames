@@ -21,7 +21,7 @@ func check_expired(delta: float) -> void:
 		
 		
 func setup(pos: Vector2, dir: Vector2, speed: float, ls: float) -> void:
-	_direction = dir * speed
+	_direction = dir.normalized() * speed
 	_life_span = ls
 	global_position = pos
 	
