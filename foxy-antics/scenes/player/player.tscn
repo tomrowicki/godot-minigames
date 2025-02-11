@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ppv5igr3aew8"]
+[gd_scene load_steps=13 format=3 uid="uid://ppv5igr3aew8"]
 
 [ext_resource type="Texture2D" uid="uid://elagrijx20w3" path="res://assets/player/player.png" id="1_er8x2"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_wk37l"]
 [ext_resource type="PackedScene" uid="uid://b55s0vctisbcy" path="res://scenes/player_cam/player_cam.tscn" id="3_2t45l"]
+[ext_resource type="PackedScene" uid="uid://dy3ts01dafmw0" path="res://scenes/shooter/shooter.tscn" id="4_xy78k"]
 
 [sub_resource type="Animation" id="Animation_d7xm3"]
 length = 0.001
@@ -154,3 +155,8 @@ asdasda
 as
 
 "
+
+[node name="Shooter" parent="." instance=ExtResource("4_xy78k")]
+speed = 150.0
+life_span = 3.0
+shoot_delay = 0.3
