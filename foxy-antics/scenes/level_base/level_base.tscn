@@ -231,17 +231,17 @@ tile_map_data = PackedByteArray("AAAAAP//AAAHAAAAAAABAP//AAAHAAAAAAACAP//AAAHAAA
 tile_set = SubResource("TileSet_0rdbr")
 
 [node name="Player" parent="." instance=ExtResource("2_fjpew")]
-position = Vector2(369, -274)
+position = Vector2(126, -49)
 
 [node name="BulletPlayer" parent="." instance=ExtResource("3_qv6ts")]
-position = Vector2(452, -98)
+position = Vector2(317, -67)
 
 [node name="BulletEnemy" parent="." instance=ExtResource("4_68ira")]
-position = Vector2(479, -77)
+position = Vector2(349, -45)
 
 [node name="ObjectMaker" parent="." instance=ExtResource("6_638nw")]
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Snail" parent="Enemies" instance=ExtResource("7_j62kt")]
-position = Vector2(480, -24)
+position = Vector2(222, -67)

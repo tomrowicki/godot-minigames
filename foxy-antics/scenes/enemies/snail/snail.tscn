@@ -91,6 +91,7 @@ size = Vector2(20, 10)
 
 [node name="Snail" instance=ExtResource("1_5ljlb")]
 script = ExtResource("2_5tprc")
+speed = 50.0
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_pvapd")
@@ -107,6 +108,6 @@ shape = SubResource("CapsuleShape2D_vpar1")
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_56y72")
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="4"]
+[node name="FloorDetection" type="RayCast2D" parent="." index="4"]
 position = Vector2(-15, 0)
 target_position = Vector2(0, 30)
