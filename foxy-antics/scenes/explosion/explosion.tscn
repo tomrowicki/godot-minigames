@@ -3,6 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://bbu5h5xo0i7q6" path="res://assets/explosion/enemy-deadth.png" id="1_qjw8w"]
 [ext_resource type="AudioStream" uid="uid://thuimhepcqfp" path="res://assets/sound/pickup3.ogg" id="2_t3krx"]
 
+[sub_resource type="Animation" id="Animation_vlpy7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_07giu"]
 resource_name = "explode"
 length = 0.7
@@ -47,21 +62,6 @@ tracks/2/keys = {
 "args": [],
 "method": &"queue_free"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_vlpy7"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37ssq"]

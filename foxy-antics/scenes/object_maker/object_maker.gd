@@ -2,6 +2,7 @@ extends Node2D
 
 # list of objects that the maker can create
 const OBJECT_SCENES: Dictionary = {
+	Constants.ObjectType.PICKUP: preload("res://scenes/fruit/fruit.tscn"),
 	Constants.ObjectType.EXPLOSION: preload("res://scenes/explosion/explosion.tscn"),
 	Constants.ObjectType.BULLET_PLAYER: preload("res://scenes/bullet_player/bullet_player.tscn"),
 	Constants.ObjectType.BULLET_ENEMY: preload("res://scenes/bullet_enemy/bullet_enemy.tscn")
@@ -25,7 +26,6 @@ func on_create_bullet(pos: Vector2, dir: Vector2, life_span: float,
 	
 	
 func on_create_object(pos: Vector2, obj_type: Constants.ObjectType) -> void:
-	
 	if !OBJECT_SCENES.has(obj_type):
 		return
 		
