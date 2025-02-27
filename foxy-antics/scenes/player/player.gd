@@ -17,9 +17,13 @@ const JUMP_VELOCITY: float = -260.0
 @onready var debug_label: Label = $DebugLabel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shooter: Shooter = $Shooter
+@onready var invincible_timer: Timer = $InvincibleTimer
+@onready var invincible_player: AnimationPlayer = $InvinciblePlayer
+
 
 
 var _state: PlayerState = PlayerState.IDLE
+var _invincible: bool = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -42,8 +46,8 @@ func _physics_process(delta: float) -> void:
 
 
 func update_debug_label() -> void:
-	debug_label.text = "floor:%s\n%s\nvel:(%.0f,%.0f)" % [is_on_floor(), PlayerState.keys()[_state],
-	 velocity.x, velocity.y]
+	debug_label.text = "floor:%s inv:%s\n%s\nvel:(%.0f,%.0f)" % [is_on_floor(), _invincible, 
+	PlayerState.keys()[_state], velocity.x, velocity.y]
 
 
 func shoot() -> void:
@@ -98,3 +102,24 @@ func set_state(new_state: PlayerState) -> void:
 			animation_player.play("jump")
 		PlayerState.FALL:
 			animation_player.play("fall")
+
+
+func go_invincible() -> void:
+	_invincible = true
+	invincible_player.play("invincible")
+	invincible_timer.start()
+
+
+func apply_hit() -> void:
+	if _invincible:
+		return
+		
+	go_invincible()
+
+func _on_invincible_timer_timeout() -> void:
+	_invincible = false
+	invincible_player.stop()
+
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	apply_hit()
