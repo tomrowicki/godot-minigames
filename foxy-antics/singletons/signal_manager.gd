@@ -7,3 +7,4 @@ signal on_pickup_hit(points: int)
 
 signal on_game_over
 signal on_player_hit(lives: int)
+signal on_level_started(lives: int)
