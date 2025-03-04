@@ -16,8 +16,18 @@ func _ready() -> void:
 	SignalManager.on_player_hit.connect(on_player_hit)
 	# Used to set up the initial no of hearts correctly
 	SignalManager.on_level_started.connect(on_player_hit)
+	SignalManager.on_game_over.connect(on_game_over)
 
 
 func on_player_hit(lives: int) -> void:
 	for lifeIndex in range(_hearts.size()):
 		_hearts[lifeIndex].visible = lives > lifeIndex
+
+
+func show_hud() -> void:
+	color_rect.show()
+
+
+func on_game_over() -> void:
+	show_hud()
+	vb_game_over.show()
