@@ -12,6 +12,7 @@ var _hearts: Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	on_score_updated(ScoreManager.get_score())
 	_hearts = hb_hearts.get_children()
 	SignalManager.on_player_hit.connect(on_player_hit)
 	# Used to set up the initial no of hearts correctly
