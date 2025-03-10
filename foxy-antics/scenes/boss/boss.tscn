@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://d16we2pkakyvy"]
+[gd_scene load_steps=23 format=3 uid="uid://d16we2pkakyvy"]
 
 [ext_resource type="Texture2D" uid="uid://pycrd76xri6p" path="res://assets/enemies/boss/boss.png" id="1_bjk3u"]
+[ext_resource type="Script" path="res://scenes/boss/boss.gd" id="1_t6b0g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv6y5"]
 size = Vector2(10, 240)
@@ -109,6 +110,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.741176, 0.129412, 1, 1), Color(1, 1, 1, 1), Color(0.741176, 0.129412, 1, 1), Color(1, 1, 1, 1), Color(0.741176, 0.129412, 1, 1), Color(1, 1, 1, 1), Color(0.741176, 0.129412, 1, 1), Color(1, 1, 1, 1), Color(0.741176, 0.129412, 1, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"set_invincible"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_63xi0"]
 resource_name = "pulse"
@@ -189,6 +204,7 @@ states/pulse/position = Vector2(626, 100)
 transitions = ["Start", "RESET", SubResource("AnimationNodeStateMachineTransition_7k40q"), "RESET", "arrive", SubResource("AnimationNodeStateMachineTransition_3b7cq"), "arrive", "pulse", SubResource("AnimationNodeStateMachineTransition_42fpr"), "pulse", "attack", SubResource("AnimationNodeStateMachineTransition_2eha1"), "attack", "pulse", SubResource("AnimationNodeStateMachineTransition_ipmnw"), "hit", "pulse", SubResource("AnimationNodeStateMachineTransition_cxkkf")]
 
 [node name="Boss" type="Node2D"]
+script = ExtResource("1_t6b0g")
 
 [node name="Trigger" type="Area2D" parent="."]
 collision_layer = 0
@@ -225,3 +241,6 @@ deterministic = false
 tree_root = SubResource("AnimationNodeStateMachine_ya1x2")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/on_trigger = false
+
+[connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
+[connection signal="area_entered" from="Visual/HitBox" to="." method="_on_hit_box_area_entered"]
