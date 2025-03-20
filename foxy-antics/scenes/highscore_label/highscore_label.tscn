@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://r0f1l1wq46b1"]
+
+[ext_resource type="LabelSettings" uid="uid://b2dyrr3deoxuq" path="res://assets/LG_blue_64.tres" id="1_54gak"]
+
+[node name="HighscoreLabel" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0000"
+label_settings = ExtResource("1_54gak")
+horizontal_alignment = 1
+vertical_alignment = 1
