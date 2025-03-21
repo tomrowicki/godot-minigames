@@ -8,14 +8,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("bullet"):
-		SignalManager.on_create_bullet.emit(
-			Vector2(400, -50), 
-			Vector2(50, -50),
-			3.0,
-			40.0,
-			Constants.ObjectType.BULLET_PLAYER
-		)
+	if Input.is_action_just_pressed("advance"):
+		GameManager.load_next_level_scene()
+		
+	if Input.is_action_just_pressed("quit"):
+		GameManager.load_main_scene()
 
 
 func on_game_over() -> void:
