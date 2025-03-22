@@ -1,11 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://r0f1l1wq46b1"]
+[gd_scene load_steps=3 format=3 uid="uid://r0f1l1wq46b1"]
 
-[ext_resource type="LabelSettings" uid="uid://b2dyrr3deoxuq" path="res://assets/LG_blue_64.tres" id="1_54gak"]
+[ext_resource type="FontFile" uid="uid://cs2rhve01yisw" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_elvus"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wfys2"]
+font = ExtResource("1_elvus")
+font_size = 48
+font_color = Color(0.105882, 0.811765, 0.894118, 1)
+outline_size = 2
+outline_color = Color(0.027451, 0.917647, 0.564706, 1)
+shadow_color = Color(0.157753, 0.157753, 0.157753, 0)
 
 [node name="HighscoreLabel" type="Label"]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "0000"
-label_settings = ExtResource("1_54gak")
+label_settings = SubResource("LabelSettings_wfys2")
 horizontal_alignment = 1
 vertical_alignment = 1
