@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://crufmc2qpilvr"]
+
+[ext_resource type="Texture2D" uid="uid://2a0nfwav6naj" path="res://assets/Purple.png" id="1_q3201"]
+
+[node name="Level" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_q3201")
+stretch_mode = 1
