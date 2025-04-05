@@ -1,8 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://crufmc2qpilvr"]
+[gd_scene load_steps=6 format=3 uid="uid://crufmc2qpilvr"]
 
 [ext_resource type="Texture2D" uid="uid://2a0nfwav6naj" path="res://assets/Purple.png" id="1_q3201"]
+[ext_resource type="Script" uid="uid://d1uk1cpkxteh7" path="res://scenes/Level/Level.gd" id="1_yvklp"]
+[ext_resource type="Texture2D" uid="uid://cnu342mn6luup" path="res://assets/spritesheet.png" id="3_wywgn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xh0y6"]
+texture = ExtResource("3_wywgn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_yvklp"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_xh0y6")
 
 [node name="Level" type="Node2D"]
+script = ExtResource("1_yvklp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -15,3 +36,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_q3201")
 stretch_mode = 1
+
+[node name="TileLayers" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMapLayer" parent="TileLayers"]
+tile_set = SubResource("TileSet_yvklp")

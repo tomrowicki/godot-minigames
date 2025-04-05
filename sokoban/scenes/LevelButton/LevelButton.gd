@@ -13,3 +13,10 @@ func _ready() -> void:
 	
 func setup(ln: String) -> void:
 	_level_number = ln
+
+
+# Requires mouse filtering to be setup properly to work (LevelButton's Inspector -> Control
+# -> Mouse -> Filter = Stop
+func _on_gui_input(event: InputEvent) -> void:
+	if event.is_action_pressed("select"):
+		GameManager.load_level_scene(_level_number)
