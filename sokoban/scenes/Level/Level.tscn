@@ -9,6 +9,7 @@ script = ExtResource("1_yvklp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
+visible = false
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -38,5 +39,5 @@ tile_map_data = PackedByteArray("AAAJAAkAAAABAAAAAAAKAAkAAAABAAAAAAALAAkAAAABAAA
 tile_set = ExtResource("3_wywgn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(488, 387)
+position = Vector2(343, 255)
 zoom = Vector2(1.5, 1.5)
