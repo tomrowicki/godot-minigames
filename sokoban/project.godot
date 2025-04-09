@@ -24,7 +24,6 @@ GameManager="*res://globals/GameManager.gd"
 
 window/size/viewport_width=1024
 window/size/viewport_height=768
-window/stretch/mode="viewport"
 
 [editor]
 
@@ -51,4 +50,5 @@ select={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
