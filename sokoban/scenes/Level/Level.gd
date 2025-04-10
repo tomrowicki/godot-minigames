@@ -45,9 +45,49 @@ func _unhandled_input(event: InputEvent) -> void:
 	if md != Vector2i.ZERO:
 		player_move(md)
 		
+	
+func is_cell_wall(cell: Vector2i) -> bool:
+	return cell in walls_tiles.get_used_cells()
+
+
+func is_cell_box(cell: Vector2i) -> bool:
+	return cell in boxes_tiles.get_used_cells()
+	
+	
+func is_cell_empty(cell: Vector2i) -> bool:
+	return !is_cell_box(cell) and !is_cell_wall(cell)
+	
+	
+func can_box_move(box_tile: Vector2i, direction: Vector2i) -> bool:
+	return is_cell_empty(box_tile + direction)
+		
+		
+func move_box(box_tile: Vector2i, md: Vector2i) -> void:
+	var dest: Vector2i = box_tile + md
+	boxes_tiles.erase_cell(box_tile)
+	
+	var tlt: TileLayers.LayerType = TileLayers.LayerType.Boxes
+	
+	if dest in targets_tiles.get_used_cells():
+		tlt = TileLayers.LayerType.TargetBoxes
+		
+	var atl_coord: Vector2i = get_atlas_coord(tlt)
+	
+	boxes_tiles.set_cell(dest, SOURCE_ID, get_atlas_coord(tlt))
+		
 		
 func player_move(md: Vector2i) -> void:
-	place_player_on_tile(_player_tile + md)
+	var dest: Vector2i = _player_tile + md
+	
+	# is dest cell a wall? -> return
+	if is_cell_wall(dest): return
+	if is_cell_box(dest) and !can_box_move(dest, md): return
+	
+	if is_cell_box(dest):
+		move_box(dest, md)
+	
+	place_player_on_tile(dest)
+	
 	
 
 func _ready() -> void:
