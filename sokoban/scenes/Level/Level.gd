@@ -12,6 +12,9 @@ const SOURCE_ID: int = 0
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var player: AnimatedSprite2D = $Player
 
+@onready var game_ui: GameUi = $CanvasLayer2/GameUI
+
+
 
 var _tile_size: int = 0
 var _player_tile: Vector2i = Vector2i.ZERO
@@ -102,12 +105,14 @@ func player_move(md: Vector2i) -> void:
 	
 	place_player_on_tile(dest)
 	_moves_made += 1
+	game_ui.set_moves_label(_moves_made)
 	check_game_state()
 	
 
 func _ready() -> void:
 	print("Level Loaded: ", GameManager.get_level_selected())
 	_tile_size = floor_tiles.tile_set.tile_size.x
+	game_ui.set_moves_label(_moves_made)
 	setup_level()
 	
 	

@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://b437ai2qu5odx"]
+
+[ext_resource type="LabelSettings" uid="uid://dt4d8t41tnpa1" path="res://assets/GM_white_32.tres" id="1_k6e7w"]
+[ext_resource type="Script" uid="uid://coyku64o3l2ix" path="res://scenes/GameUI/GameUi.gd" id="1_s76ix"]
+
+[node name="GameUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s76ix")
+
+[node name="MC" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+
+[node name="VB" type="VBoxContainer" parent="MC"]
+layout_mode = 2
+
+[node name="HB" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC/VB/HB"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Level"
+label_settings = ExtResource("1_k6e7w")
+
+[node name="LevelLabel" type="Label" parent="MC/VB/HB"]
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("1_k6e7w")
+
+[node name="HB2" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC/VB/HB2"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Moves"
+label_settings = ExtResource("1_k6e7w")
+
+[node name="MovesLabel" type="Label" parent="MC/VB/HB2"]
+layout_mode = 2
+text = "99"
+label_settings = ExtResource("1_k6e7w")
+
+[node name="HB3" type="HBoxContainer" parent="MC/VB"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MC/VB/HB3"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Best"
+label_settings = ExtResource("1_k6e7w")
+
+[node name="BestLabel" type="Label" parent="MC/VB/HB3"]
+layout_mode = 2
+text = "-"
+label_settings = ExtResource("1_k6e7w")
