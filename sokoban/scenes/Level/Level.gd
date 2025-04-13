@@ -91,6 +91,7 @@ func check_game_state() -> void:
 			return
 	_game_over = true # if there are no uncovered targets
 	var best: bool = GameManager.level_completed(_level, _moves_made)
+	game_ui.game_over(_moves_made, best)
 	
 		
 func player_move(md: Vector2i) -> void:
