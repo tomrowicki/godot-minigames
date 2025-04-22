@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dr3g3bnr0myj6"]
+
+[ext_resource type="PackedScene" uid="uid://c1fvn1h6ebfni" path="res://Scenes/Projectile/Bullets/BulletBase.tscn" id="1_vv15t"]
+[ext_resource type="Texture2D" uid="uid://cacd27vshqpk4" path="res://assets/lasers/laserBlue03.png" id="2_uerx6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uerx6"]
+radius = 2.0
+height = 16.0
+
+[node name="BulletPlayer" instance=ExtResource("1_vv15t")]
+collision_layer = 2
+collision_mask = 8
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_uerx6")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_uerx6")
