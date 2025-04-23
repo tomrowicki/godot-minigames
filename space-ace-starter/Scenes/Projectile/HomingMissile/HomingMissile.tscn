@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://b23gomfr7sqe2"]
+
+[ext_resource type="PackedScene" uid="uid://dq8l5l7hu2mc4" path="res://Scenes/Projectile/Projectile.tscn" id="1_2w5mq"]
+[ext_resource type="Texture2D" uid="uid://bqywi64wvxcqj" path="res://assets/lasers/spaceMissiles_040.png" id="2_8k1fd"]
+[ext_resource type="Script" uid="uid://babsrsplwbpad" path="res://Scenes/Projectile/HomingMissile/HomingMissile.gd" id="2_ptgyi"]
+[ext_resource type="Texture2D" uid="uid://b0hlsmrvemel0" path="res://assets/misc/ParticleDot.png" id="3_hw20t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8k1fd"]
+radius = 5.0
+height = 34.0
+
+[sub_resource type="Curve" id="Curve_hw20t"]
+_data = [Vector2(0, 0.011236), 0.0, 0.0, 0, 0, Vector2(0.801136, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.011236), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ptgyi"]
+colors = PackedColorArray(0.498039, 0, 0, 1, 1, 1, 1, 1)
+
+[node name="HomingMissile" instance=ExtResource("1_2w5mq")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_ptgyi")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 1.5708
+texture = ExtResource("2_8k1fd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8k1fd")
+
+[node name="OutOfTime" parent="." index="2"]
+life_s = 200.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="4"]
+position = Vector2(-12, 0)
+rotation = 1.5708
+amount = 42
+texture = ExtResource("3_hw20t")
+lifetime = 0.3
+speed_scale = 1.5
+explosiveness = 0.22
+lifetime_randomness = 0.3
+emission_shape = 1
+emission_sphere_radius = 3.0
+direction = Vector2(0, 1)
+spread = 5.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 140.0
+initial_velocity_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.3
+scale_amount_curve = SubResource("Curve_hw20t")
+color = Color(1, 0.933333, 0, 1)
+color_ramp = SubResource("Gradient_ptgyi")
