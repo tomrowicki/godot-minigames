@@ -11,6 +11,12 @@ signal on_create_bullet(
 	dir: Vector2, 
 	speed: float, 
 	bull_type: BulletBase.BulletType)
+signal on_player_health_bonus(v: int)
+
+
+
+func emit_on_player_health_bonus(v: int):
+	on_player_health_bonus.emit(v)
 
 
 func emit_on_player_hit(v: int) -> void:
