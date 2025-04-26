@@ -20,7 +20,7 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-color = Color(0.133333, 0, 0.733333, 1)
+color = Color(0.133333, 0, 0.733333, 0.384314)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
