@@ -31,11 +31,11 @@ func emit_on_create_explosion(pos: Vector2, animation_name: String) -> void:
 		on_create_explosion.emit(pos, animation_name)
 		
 		
-func emit_on_powerup_init(pos: Vector2, type: PowerUp.PowerUpType) -> void:
+func emit_on_create_powerup(pos: Vector2, type: PowerUp.PowerUpType) -> void:
 	on_powerup_init.emit(pos, type)
 	
 	
-func emit_on_random_powerup_init(pos: Vector2) -> void:
+func emit_on_create_powerup_random(pos: Vector2) -> void:
 	var rand = randi_range(0, 1)
 	var type: PowerUp.PowerUpType = PowerUp.PowerUpType.values().get(rand)
 	# OR use PowerUp.PowerUpType.values().pick_random()

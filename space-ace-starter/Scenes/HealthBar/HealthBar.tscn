@@ -12,3 +12,4 @@ nine_patch_stretch = true
 texture_under = ExtResource("1_r0fvj")
 texture_progress = ExtResource("2_pdsbb")
 script = ExtResource("3_pdsbb")
+start_health = 70

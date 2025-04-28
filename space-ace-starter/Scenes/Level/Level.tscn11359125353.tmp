@@ -56,6 +56,16 @@ curve = SubResource("Curve2D_pocpv")
 [node name="EnemyZipper" parent="Path2D" instance=ExtResource("8_aei0q")]
 position = Vector2(-19, 131)
 rotation = 0.00578865
+shoots_at_player = false
+aims_at_player = false
+bullet_type = 1
+bullet_speed = 120.0
+bullet_direction = Vector2(0, 1)
+bullet_wait_time = 3.0
+bullet_wait_time_var = 0.5
+power_up_chance = 0.9
+points = 10
+crash_damage = 10
 
 [node name="Path2D2" type="Path2D" parent="."]
 curve = SubResource("Curve2D_0o5jl")
@@ -63,6 +73,13 @@ curve = SubResource("Curve2D_0o5jl")
 [node name="EnemyBio" parent="Path2D2" instance=ExtResource("9_s0x6l")]
 position = Vector2(665, 222)
 rotation = -3.14011
+aims_at_player = false
+bullet_type = 1
+bullet_speed = 120.0
+bullet_direction = Vector2(0, 1)
+power_up_chance = 0.9
+points = 10
+crash_damage = 10
 
 [node name="Path2D3" type="Path2D" parent="."]
 curve = SubResource("Curve2D_q23xf")
@@ -70,3 +87,9 @@ curve = SubResource("Curve2D_q23xf")
 [node name="EnemyBomber" parent="Path2D3" instance=ExtResource("10_gyjo4")]
 position = Vector2(-23, 307)
 rotation = 0.00717348
+bullet_direction = Vector2(0, 1)
+bullet_wait_time = 3.0
+bullet_wait_time_var = 0.5
+power_up_chance = 0.9
+points = 10
+crash_damage = 10

@@ -1,0 +1,131 @@
+[gd_scene load_steps=19 format=3 uid="uid://bixhjvd6mopk0"]
+
+[ext_resource type="PackedScene" uid="uid://djgddlmap78ma" path="res://Scenes/Enemies/EnemyShip.tscn" id="1_7w353"]
+[ext_resource type="Texture2D" uid="uid://dits7k8byw8v1" path="res://assets/ships/bomber_1.png" id="2_vlhmb"]
+[ext_resource type="Texture2D" uid="uid://cakduing16poj" path="res://assets/ships/bomber_2.png" id="3_coiys"]
+[ext_resource type="Texture2D" uid="uid://byxn6pi8avebo" path="res://assets/ships/bomber_3.png" id="4_8va7l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7w353"]
+radius = 20.0
+height = 56.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6kxf"]
+atlas = ExtResource("2_vlhmb")
+region = Rect2(0, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5glfq"]
+atlas = ExtResource("2_vlhmb")
+region = Rect2(48, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfc7k"]
+atlas = ExtResource("2_vlhmb")
+region = Rect2(96, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3byee"]
+atlas = ExtResource("2_vlhmb")
+region = Rect2(144, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd6ef"]
+atlas = ExtResource("3_coiys")
+region = Rect2(0, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_era5d"]
+atlas = ExtResource("3_coiys")
+region = Rect2(48, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq6hd"]
+atlas = ExtResource("3_coiys")
+region = Rect2(96, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nru4"]
+atlas = ExtResource("3_coiys")
+region = Rect2(144, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kejpr"]
+atlas = ExtResource("4_8va7l")
+region = Rect2(0, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0jes"]
+atlas = ExtResource("4_8va7l")
+region = Rect2(48, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mist1"]
+atlas = ExtResource("4_8va7l")
+region = Rect2(96, 0, 48, 58)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md304"]
+atlas = ExtResource("4_8va7l")
+region = Rect2(144, 0, 48, 58)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h3k0q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6kxf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5glfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfc7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3byee")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd6ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_era5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq6hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nru4")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kejpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y0jes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mist1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md304")
+}],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 10.0
+}]
+
+[node name="EnemyBomber" instance=ExtResource("1_7w353")]
+shoots_at_player = true
+aims_at_player = true
+bullet_type = 2
+bullet_speed = 80.0
+
+[node name="HealthBar" parent="." index="3"]
+offset_left = -16.0
+offset_top = -30.0
+offset_right = 16.0
+offset_bottom = -28.0
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CapsuleShape2D_7w353")
+
+[node name="AnimatedSprite2D" parent="." index="5"]
+sprite_frames = SubResource("SpriteFrames_h3k0q")
+animation = &"new_animation_1"
