@@ -13,7 +13,7 @@ class_name EnemyBase
 @onready var health_bar: HealthBar = $HealthBar
 
 
-var _speed: float = 100
+var _speed: float = 50
 
 
 func _process(delta: float) -> void:
