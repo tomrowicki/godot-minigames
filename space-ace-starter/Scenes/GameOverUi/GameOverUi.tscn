@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://soe2s3kqvu4a"]
+
+[ext_resource type="FontFile" uid="uid://b33msg5mojbvg" path="res://assets/fonts/LuckiestGuy-Regular.ttf" id="1_8nicn"]
+[ext_resource type="LabelSettings" uid="uid://536xs7kt2dki" path="res://Resources/lg_white_32.tres" id="1_j2od3"]
+[ext_resource type="Script" uid="uid://doh8umrqbju43" path="res://Scenes/GameOverUi/GameOverUi.gd" id="1_mdbud"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mdbud"]
+font = ExtResource("1_8nicn")
+font_size = 96
+font_color = Color(0.299629, 0.753055, 0.225125, 1)
+shadow_color = Color(0.768655, 0.000456472, 0.768649, 1)
+
+[node name="GameOverUi" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mdbud")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113725, 0.0392157, 0.278431, 0.619608)
+
+[node name="VB" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -25.0
+offset_right = 46.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VB"]
+layout_mode = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_mdbud")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VB"]
+visible = false
+layout_mode = 2
+text = "asdasdasda"
+label_settings = ExtResource("1_j2od3")
+horizontal_alignment = 1
+vertical_alignment = 1
