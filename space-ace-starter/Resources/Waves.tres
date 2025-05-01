@@ -1,20 +1,12 @@
-[gd_resource type="Resource" script_class="EnemyWaves" load_steps=7 format=3 uid="uid://bg0cx0hdj54tf"]
+[gd_resource type="Resource" script_class="EnemyWaves" load_steps=6 format=3 uid="uid://bg0cx0hdj54tf"]
 
 [ext_resource type="Script" uid="uid://de4pkwn7t1x80" path="res://Classes/EnemyWaves.gd" id="1_f675a"]
 [ext_resource type="Script" uid="uid://cwir453rkaf77" path="res://Classes/EnemyWave.gd" id="2_nfyhi"]
-[ext_resource type="PackedScene" uid="uid://dj28c01k0wujo" path="res://Scenes/Enemies/EnemyZipper.tscn" id="3_nfyhi"]
+[ext_resource type="Resource" uid="uid://r7ocm4t4nrim" path="res://Resources/ZipperWave.tres" id="3_3y4xg"]
 [ext_resource type="Resource" uid="uid://c40h73v2ellx5" path="res://Resources/BioWave.tres" id="4_3y4xg"]
 [ext_resource type="Resource" uid="uid://dyg0mmh1fc6c" path="res://Resources/BomberWave.tres" id="5_h68fo"]
 
-[sub_resource type="Resource" id="Resource_xljgd"]
-script = ExtResource("2_nfyhi")
-enemy_scene = ExtResource("3_nfyhi")
-speed = 150.0
-gap = 0.6
-number = 8
-metadata/_custom_type_script = "uid://cwir453rkaf77"
-
 [resource]
 script = ExtResource("1_f675a")
-waves = Array[ExtResource("2_nfyhi")]([SubResource("Resource_xljgd"), ExtResource("4_3y4xg"), ExtResource("5_h68fo")])
+waves = Array[ExtResource("2_nfyhi")]([ExtResource("3_3y4xg"), ExtResource("4_3y4xg"), ExtResource("5_h68fo")])
 metadata/_custom_type_script = "uid://de4pkwn7t1x80"
