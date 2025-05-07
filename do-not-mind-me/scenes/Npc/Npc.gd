@@ -1,6 +1,9 @@
 extends CharacterBody2D
 
 
+const SPEED: float = 100.0
+
+
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 @onready var debug_label: Label = $DebugLabel
 
@@ -15,7 +18,19 @@ func _ready() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	update_navigation()
 	set_label()
+
+
+func update_navigation() -> void:
+	if nav_agent.is_navigation_finished(): return
+	
+	# next position in path
+	var npp: Vector2 = nav_agent.get_next_path_position()
+	rotation = global_position.direction_to(npp).angle()
+	# transform is the vector of where the object is facing
+	velocity = transform.x * SPEED
+	move_and_slide()
 
 
 func set_label() -> void:

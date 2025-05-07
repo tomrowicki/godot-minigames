@@ -4,10 +4,10 @@
 [ext_resource type="TileSet" uid="uid://d3cgevteo01hy" path="res://Resources/LevelTiles.tres" id="2_yvklp"]
 [ext_resource type="PackedScene" uid="uid://dqk6eiocsg56x" path="res://scenes/Npc/Npc.tscn" id="3_wywgn"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_yvklp"]
-vertices = PackedVector2Array(564.25, 416.117, 578.594, 524.922, 115.102, 522.063, 342.867, 419.148, 117.102, 325.328, 370.008, 161.859, 419.461, 33.0391, 560.438, 33.9297, 566.508, 164.828, 393.477, 91, 26, 91, 26, 322.32)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 7, 8, 5, 9), PackedInt32Array(10, 9, 5, 4, 11)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(16, 81, 16, 332, 107, 335, 105, 532, 590, 535, 573, 406, 354, 409, 379, 172, 577, 175, 570, 24, 413, 23, 387, 81)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wywgn"]
+vertices = PackedVector2Array(116.508, 349.898, 25.1406, 350.883, 28.8594, 89.8906, 413, 85.8984, 320.406, 203.609, 413, 27.8906, 583, 26.1016, 583, 161.344, 391.469, 168.078, 364.961, 388.031, 360.328, 521.367, 125.492, 530.617)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 3), PackedInt32Array(3, 7, 8), PackedInt32Array(9, 10, 11, 0, 4), PackedInt32Array(3, 8, 4)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(403, 18, 593, 16, 593, 171, 394, 178, 332, 209, 375, 387, 370, 531, 116, 541, 107, 360, 15, 361, 19, 80, 403, 76)])
 
 [node name="Level" type="Node2D"]
 
@@ -33,8 +33,8 @@ tile_set = ExtResource("2_yvklp")
 [node name="Floors" type="TileMapLayer" parent="Tiles"]
 tile_set = ExtResource("2_yvklp")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_yvklp")
-
 [node name="Npc" parent="." instance=ExtResource("3_wywgn")]
 position = Vector2(474, 139)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_wywgn")
