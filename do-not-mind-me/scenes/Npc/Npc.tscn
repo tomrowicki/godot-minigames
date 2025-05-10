@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dqk6eiocsg56x"]
+[gd_scene load_steps=5 format=3 uid="uid://dqk6eiocsg56x"]
 
 [ext_resource type="Script" uid="uid://bqlwnkwog812b" path="res://scenes/Npc/Npc.gd" id="1_my7bq"]
 [ext_resource type="Texture2D" uid="uid://caxp6xmwm2g0d" path="res://assets/images/soldier1_gun.png" id="1_romjt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_my7bq"]
+font_color = Color(0.0598387, 0.0544124, 0.146837, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_romjt"]
 height = 38.0
@@ -16,9 +19,13 @@ offset_left = -24.0
 offset_top = -129.0
 offset_right = 31.0
 offset_bottom = -54.0
+scale = Vector2(0.873016, 0.832062)
 text = "asdasd
 asdasd
+asdasd
+asddas
 asdasd"
+label_settings = SubResource("LabelSettings_my7bq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_romjt")
