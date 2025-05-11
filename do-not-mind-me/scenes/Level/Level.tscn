@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://kv6auc60ap7a"]
+[gd_scene load_steps=8 format=4 uid="uid://kv6auc60ap7a"]
 
 [ext_resource type="PackedScene" uid="uid://du56krpc0dwm5" path="res://scenes/GameUi/GameUi.tscn" id="1_q3201"]
 [ext_resource type="TileSet" uid="uid://d3cgevteo01hy" path="res://Resources/LevelTiles.tres" id="2_yvklp"]
 [ext_resource type="PackedScene" uid="uid://dqk6eiocsg56x" path="res://scenes/Npc/Npc.tscn" id="3_wywgn"]
 [ext_resource type="PackedScene" uid="uid://d2eyatk5w4fpr" path="res://scenes/Waypoint/Waypoint.tscn" id="4_xh0y6"]
+[ext_resource type="PackedScene" uid="uid://c8u7yak3cfkq2" path="res://scenes/Player/Player.tscn" id="5_ydaos"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_wywgn"]
 vertices = PackedVector2Array(848.688, 43.75, 844.281, 191.242, 672.109, 195.719, 673.898, 39.4375, 603.188, 549, 585, 329, 776.219, 275.859, 1049.56, 307.953, 1066.29, 561.688, 588.57, 229.992, 585, 246, 373, 329, 93.4688, 544.094, 102.469, 351.141, 404.148, 80.8203, 403.156, 17, 572.719, 17, 24.9297, 350.117, 23.0703, 87.8125, 373, 246)
@@ -74,3 +75,6 @@ position = Vector2(454, 472)
 
 [node name="Waypoint4" parent="Path" instance=ExtResource("4_xh0y6")]
 position = Vector2(259, 207)
+
+[node name="Player" parent="." instance=ExtResource("5_ydaos")]
+position = Vector2(285, 465)
