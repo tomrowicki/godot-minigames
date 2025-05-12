@@ -12,11 +12,13 @@ const SPEED: float = 100.0
 
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 @onready var debug_label: Label = $DebugLabel
+@onready var player_detect: RayCast2D = $PlayerDetect
 
 
 var _waypoints: Array[Vector2] = []
 var _current_wp: int = 0
 var _state: EnemyState = EnemyState.Patrolling
+var _player_ref: Player
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -25,8 +27,11 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _ready() -> void:
+	_player_ref = get_tree().get_first_node_in_group(Player.GROUP_NAME)
+	if !_player_ref:
+		queue_free()
 	create_wp()
-	pass
+	
 	
 func create_wp() -> void:
 	for c in get_node(patrol_points).get_children():
@@ -34,9 +39,29 @@ func create_wp() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	process_behaviour()
 	update_movement()
-	update_navigation()
+	update_raycast()
 	set_label()
+	
+	
+func player_is_visible() -> bool:
+	return player_detect.get_collider() is Player
+	
+	
+func get_fov_angle() -> float:
+	var dtp: Vector2 = global_position.direction_to(_player_ref.global_position)
+	# angle to player
+	var atp: float = transform.x.angle_to(dtp)
+	return rad_to_deg(atp)
+	
+	
+func update_raycast() -> void:
+	player_detect.look_at(_player_ref.global_position)
+	
+	
+func can_see_player() -> bool:
+	return abs(get_fov_angle()) < 60.0 and player_is_visible()
 	
 	
 func navigate_wp() -> void:
@@ -46,7 +71,7 @@ func navigate_wp() -> void:
 	_current_wp = (_current_wp + 1) % _waypoints.size()
 
 
-func update_navigation() -> void:
+func update_movement() -> void:
 	if nav_agent.is_navigation_finished():
 		return
 	
@@ -65,7 +90,7 @@ func process_patrolling() -> void:
 		navigate_wp()
 
 
-func update_movement() -> void:
+func process_behaviour() -> void:
 	match _state:
 		EnemyState.Patrolling:
 			process_patrolling()
@@ -73,7 +98,7 @@ func update_movement() -> void:
 
 func set_label() -> void:
 	var s: String = "Fin:%s\n" % nav_agent.is_navigation_finished()
-	s += "TG_REA:%s\n" % nav_agent.is_target_reached()
+	s += "Vis:%s FOV:%.0f\n" % [player_is_visible(), get_fov_angle()]
 	s += "CAN_REA:%s\n" % nav_agent.is_target_reachable()
 	s += "TAR:%s\n" % nav_agent.target_position
 	s += "ST:%s" % EnemyState.keys()[_state]
