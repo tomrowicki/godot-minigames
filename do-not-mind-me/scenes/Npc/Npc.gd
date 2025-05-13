@@ -13,6 +13,10 @@ const SPEED: float = 100.0
 @onready var nav_agent: NavigationAgent2D = $NavAgent
 @onready var debug_label: Label = $DebugLabel
 @onready var player_detect: RayCast2D = $PlayerDetect
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var warning: Sprite2D = $Warning
+@onready var gasp_sound: AudioStreamPlayer2D = $GaspSound
+
 
 
 var _waypoints: Array[Vector2] = []
@@ -39,6 +43,7 @@ func create_wp() -> void:
 	
 
 func _physics_process(delta: float) -> void:
+	detect_player()
 	process_behaviour()
 	update_movement()
 	update_raycast()
@@ -88,12 +93,50 @@ func update_movement() -> void:
 func process_patrolling() -> void:
 	if nav_agent.is_navigation_finished():
 		navigate_wp()
+		
+		
+func process_chasing() -> void:
+	nav_agent.target_position = _player_ref.global_position
+		
+		
+func process_searching() -> void:
+	if nav_agent.is_navigation_finished():
+		set_state(EnemyState.Patrolling)
+		
 
 
 func process_behaviour() -> void:
 	match _state:
 		EnemyState.Patrolling:
 			process_patrolling()
+		EnemyState.Chasing:
+			process_chasing()
+		EnemyState.Searching:
+			process_searching()
+
+
+func set_state(new_state: EnemyState) -> void:
+	if new_state == _state: return
+
+	if _state == EnemyState.Searching:
+		warning.hide()
+		
+	if new_state == EnemyState.Searching:
+		warning.show()
+	elif new_state == EnemyState.Chasing:
+		gasp_sound.play()
+		animation_player.play("alert")
+	elif new_state == EnemyState.Patrolling:
+		animation_player.play("RESET")
+
+	_state = new_state
+	
+	
+func detect_player() -> void:
+	if can_see_player():
+		set_state(EnemyState.Chasing)
+	elif _state == EnemyState.Chasing:
+		set_state(EnemyState.Searching)
 
 
 func set_label() -> void:
