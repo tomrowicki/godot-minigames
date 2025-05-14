@@ -4,7 +4,17 @@ extends CharacterBody2D
 enum EnemyState {Patrolling, Chasing, Searching}
 
 
-const SPEED: float = 100.0
+const SPEED: Dictionary[EnemyState, float] = {
+	EnemyState.Patrolling: 60.0,
+ 	EnemyState.Chasing: 110.0,
+	EnemyState.Searching: 80.0
+}
+
+const FOV: Dictionary[EnemyState, float] = {
+	EnemyState.Patrolling: 60.0,
+ 	EnemyState.Chasing: 120.0,
+	EnemyState.Searching: 100.0
+}
 
 
 @export var patrol_points: NodePath
@@ -66,7 +76,7 @@ func update_raycast() -> void:
 	
 	
 func can_see_player() -> bool:
-	return abs(get_fov_angle()) < 60.0 and player_is_visible()
+	return abs(get_fov_angle()) < FOV[_state] and player_is_visible()
 	
 	
 func navigate_wp() -> void:
@@ -86,7 +96,7 @@ func update_movement() -> void:
 	# transform is the vector of where the object is facing
 	#nav_agent.velocity = transform.x * SPEED # when computed _on_nav_agent_velocity_computed gets invoked
 	
-	velocity = transform.x * SPEED
+	velocity = transform.x * SPEED[_state]
 	move_and_slide()
 
 

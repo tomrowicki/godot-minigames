@@ -4,7 +4,7 @@ extends CharacterBody2D
 class_name Player
 
 
-const SPEED: float = 200.0
+const SPEED: float = 150.0
 const GROUP_NAME: String = "player"
 
 
