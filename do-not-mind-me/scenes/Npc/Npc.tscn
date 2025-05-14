@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqk6eiocsg56x"]
+[gd_scene load_steps=14 format=3 uid="uid://dqk6eiocsg56x"]
 
 [ext_resource type="Script" uid="uid://bqlwnkwog812b" path="res://scenes/Npc/Npc.gd" id="1_my7bq"]
 [ext_resource type="Texture2D" uid="uid://caxp6xmwm2g0d" path="res://assets/images/soldier1_gun.png" id="1_romjt"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://ds2frwfe6mbk3" path="res://assets/sounds/gasp2.wav" id="4_e42uu"]
 [ext_resource type="AudioStream" uid="uid://cwqoo47jpabq0" path="res://assets/sounds/gasp3.wav" id="5_l625u"]
 [ext_resource type="Texture2D" uid="uid://4juot8u1ynhk" path="res://assets/images/running_1.png" id="6_e42uu"]
+[ext_resource type="AudioStream" uid="uid://5stm148sgt2t" path="res://assets/sounds/sfx_wpn_laser2.wav" id="7_l625u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_my7bq"]
 font_color = Color(0.0598387, 0.0544124, 0.146837, 1)
@@ -103,3 +104,13 @@ texture = ExtResource("6_e42uu")
 libraries = {
 &"": SubResource("AnimationLibrary_l625u")
 }
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_l625u")
+
+[connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

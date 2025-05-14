@@ -4,6 +4,8 @@ extends CharacterBody2D
 enum EnemyState {Patrolling, Chasing, Searching}
 
 
+const BULLET = preload("res://scenes/Bullet/Bullet.tscn")
+
 const SPEED: Dictionary[EnemyState, float] = {
 	EnemyState.Patrolling: 60.0,
  	EnemyState.Chasing: 110.0,
@@ -26,6 +28,7 @@ const FOV: Dictionary[EnemyState, float] = {
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var warning: Sprite2D = $Warning
 @onready var gasp_sound: AudioStreamPlayer2D = $GaspSound
+@onready var laser_sound: AudioStreamPlayer2D = $LaserSound
 
 
 
@@ -159,6 +162,19 @@ func set_label() -> void:
 	debug_label.text = s
 
 
-#func _on_nav_agent_velocity_computed(safe_velocity: Vector2) -> void:
-	#velocity = safe_velocity
-	#move_and_slide()
+func shoot() -> void:
+	if _state != EnemyState.Chasing: return
+	
+	var b = BULLET.instantiate()
+	b.global_position = global_position
+	get_tree().current_scene.call_deferred("add_child", b)
+	laser_sound.play()
+
+
+func _on_nav_agent_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity = safe_velocity
+	move_and_slide()
+
+
+func _on_shoot_timer_timeout() -> void:
+	shoot()
