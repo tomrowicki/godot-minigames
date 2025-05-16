@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://g44t0aqxvpmg"]
+[gd_scene load_steps=7 format=3 uid="uid://g44t0aqxvpmg"]
 
+[ext_resource type="Script" uid="uid://dupbd4tvkoef3" path="res://scenes/Main/Main.gd" id="1_d463r"]
 [ext_resource type="LabelSettings" uid="uid://o587wb3hvjnh" path="res://assets/lg_d_orange_64.tres" id="1_pkilc"]
 [ext_resource type="Texture2D" uid="uid://dyvpmjyfyvdxg" path="res://assets/images/pill1.png" id="3_exyxu"]
 [ext_resource type="Texture2D" uid="uid://cds85ull7ybcn" path="res://assets/images/survivor1_gun.png" id="4_r0gd4"]
@@ -7,12 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://2jyi4ixcomwj" path="res://assets/images/pill2.png" id="6_yxg74"]
 
 [node name="Main" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_d463r")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
