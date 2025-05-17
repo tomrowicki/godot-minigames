@@ -1,6 +1,7 @@
 extends Area2D
 
 
+const BOOM = preload("res://scenes/Boom/Boom.tscn")
 const SPEED: float = 250.0
 
 
@@ -20,7 +21,14 @@ func _process(delta: float) -> void:
 	global_position += _dir * delta
 
 
+func make_boom() -> void:
+	var b = BOOM.instantiate()
+	b.global_position = global_position
+	get_tree().current_scene.call_deferred("add_child", b)
+
+
 func _on_body_entered(body: Node2D) -> void:
+	make_boom()
 	if body is Player:
 		SignalHub.emit_on_player_died()
 	queue_free()
